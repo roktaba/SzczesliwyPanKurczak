@@ -1,28 +1,39 @@
 #include <SFML/Graphics.hpp>
 #include "WindowResolution.h"
+#include "GameMenu.h"
+#include "WindowEventCheck.h"
+#include "PlayScreen.h"
 
 int main()
 {
 	WindowResolution resolution;
 	sf::RenderWindow window(sf::VideoMode(resolution.getScreenWidth(), resolution.getScreenHeight()), "Sczesliwy pan kurczak", sf::Style::Titlebar | sf::Style::Close);
-
+	int gameStatus = 1; //0-EXIT, 1-MENU, 2-GAME
 	while (window.isOpen())
 	{
-		sf::Event windowAction;
-		while (window.pollEvent(windowAction))
+		WindowEventCheck::eventChecker(window);
+		switch (gameStatus)
 		{
-			switch (windowAction.type)
-			{
-				case sf::Event::Closed:
-					window.close();
-					break;
-				default:
-					break;
-			}
-
+		case 0:
+		{
+			window.close();
+			break;
 		}
-		window.clear(sf::Color(51, 153, 255));
-		window.display();
+		case 1:
+		{
+			GameMenu menu(window);
+			gameStatus = menu.menuLoop(window);
+			break;
+		}
+		case 2:
+		{
+			PlayScreen playGame;
+			gameStatus = playGame.playLoop(window);
+			break;
+		}
+		default:
+			break;
+		}
 	}
 	return 0;
 }
