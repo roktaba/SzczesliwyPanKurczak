@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "WindowEventCheck.h"
+#include "Chicken.h"
 
 class PlayScreen
 {

@@ -51,6 +51,11 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 			play = true;
 			break;
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			play = true;
+			break;
+		}
 		if (exitButton.getGlobalBounds().contains(mouse))
 		{
 			exitButton.setFillColor(sf::Color::Red);
