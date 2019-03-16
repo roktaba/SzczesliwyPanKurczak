@@ -22,6 +22,7 @@ Chicken::Chicken()
 	canJump = true;
 	tempPosY = chickenSprite.getPosition().y;
 	dt.restartDT();
+	srand(time(NULL));
 }
 
 
@@ -34,19 +35,21 @@ void Chicken::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.draw(chickenSprite, states);
 }
 
-void Chicken::uptade()
+void Chicken::uptade(sf::RenderWindow &window)
 {
 	if (!canJump)
 	{
 		velocity.y += 981 * (float)dt.getDT();
 		chickenSprite.move(velocity * (float)dt.getDT());
+		if (tempPosY < chickenSprite.getPosition().y)
+		{
+			velocity.x = 0;
+			velocity.y = 0;
+			canJump = true;
+			setRandomPos(window);
+		}
 	}
-	if (tempPosY < chickenSprite.getPosition().y)
-	{
-		velocity.x = 0;
-		velocity.y = 0;
-		canJump = true;
-	}
+	checkWindowBounds(window);
 	dt.restartDT();
 }
 
@@ -56,9 +59,32 @@ void Chicken::jump()
 	{
 		velocity.y = -sqrtf(2.0f * 981.0f * jumpHeight);
 		canJump = false;
-		velocity.x = 70;
+		if ((std::rand() % 2 + 1) == 1)
+			velocity.x = 70;
+		else
+			velocity.x = -70;
 		tempPosY = chickenSprite.getPosition().y;
 	}
+}
+
+void Chicken::setRandomPos(sf::RenderWindow &window)
+{
+	int x = window.getSize().x;
+	int y = window.getSize().y;
+	chickenSprite.setPosition((std::rand() % x + 1), (std::rand() % y + 1));
+	checkWindowBounds(window);
+}
+
+void Chicken::checkWindowBounds(sf::RenderWindow & window)
+{
+	if ((chickenSprite.getPosition().x + chickenSprite.getGlobalBounds().width) > (float)window.getSize().x)
+		chickenSprite.setPosition(((float)window.getSize().x - chickenSprite.getGlobalBounds().width), chickenSprite.getPosition().y);
+	if (chickenSprite.getPosition().x <= 0)
+		chickenSprite.setPosition(1, chickenSprite.getPosition().y);
+	if ((chickenSprite.getPosition().y + chickenSprite.getGlobalBounds().height) > window.getSize().y)
+		chickenSprite.setPosition(chickenSprite.getPosition().x, ((float)window.getSize().y - chickenSprite.getGlobalBounds().height));
+	if (chickenSprite.getPosition().y <= 0)
+		chickenSprite.setPosition(chickenSprite.getPosition().x, 1);
 }
 
 sf::Vector2f Chicken::getChickenPos()

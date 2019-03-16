@@ -5,6 +5,7 @@
 #include "Egg.h"
 #include <array>
 #include "DeltaTime.h"
+#include "Points.h"
 
 class PlayScreen
 {
@@ -14,7 +15,7 @@ public:
 	int playLoop(sf::RenderWindow &window);
 
 private: 
-	std::array<Egg, 10> littleEggs;
+	std::array<Egg, 300> littleEggs;
 	int eggsCount;
 	DeltaTime dtEggPlacing;
 	DeltaTime dt;

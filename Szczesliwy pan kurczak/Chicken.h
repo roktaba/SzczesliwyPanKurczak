@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include "DeltaTime.h"
 #include <cmath>
-#include <iostream>
+#include <ctime>
 
 class Chicken :public sf::Drawable,
 	sf::Transformable
@@ -12,8 +12,10 @@ public:
 	Chicken();
 	~Chicken();
 	sf::Vector2f getChickenPos();
-	void uptade();
+	void uptade(sf::RenderWindow &window);
 	void jump();
+	void setRandomPos(sf::RenderWindow &window);
+	void checkWindowBounds(sf::RenderWindow &window);
 
 private:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

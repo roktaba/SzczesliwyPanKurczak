@@ -7,7 +7,7 @@
 int main()
 {
 	WindowResolution resolution;
-	sf::RenderWindow window(sf::VideoMode(resolution.getScreenWidth(), resolution.getScreenHeight()), "Sczesliwy pan kurczak", sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(resolution.getScreenWidth(), resolution.getScreenHeight()), "Sczesliwy pan kurczak", sf::Style::Titlebar | sf::Style::Close | sf::Style::Fullscreen);
 	int gameStatus = 1; //0-EXIT, 1-MENU, 2-GAME
 	while (window.isOpen())
 	{
