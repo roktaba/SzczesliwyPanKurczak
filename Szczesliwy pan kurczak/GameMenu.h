@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include "WindowEventCheck.h"
+#include "DeltaTime.h"
 
 class GameMenu
 {
@@ -15,5 +16,6 @@ private:
 	sf::Text gameName;
 	sf::Text playButton;
 	sf::Text exitButton;
+	DeltaTime dt;
 };
 

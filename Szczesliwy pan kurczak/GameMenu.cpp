@@ -66,11 +66,15 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 			exit = true;
 			break;
 		}
-		window.clear(sf::Color(51, 153, 255));
-		window.draw(gameName);
-		window.draw(playButton);
-		window.draw(exitButton);
-		window.display();
+		if (dt.getDT() > 0.017)
+		{
+			dt.restartDT();
+			window.clear(sf::Color(51, 153, 255));
+			window.draw(gameName);
+			window.draw(playButton);
+			window.draw(exitButton);
+			window.display();
+		}
 	}
 	if (play)
 		return 2;
