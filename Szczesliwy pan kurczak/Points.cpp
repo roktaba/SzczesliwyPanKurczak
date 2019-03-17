@@ -16,7 +16,7 @@ Points::Points(sf::RenderWindow &window)
 	eggPoints.setFont(pointsFont);
 	eggPoints.setFillColor(sf::Color::Red);
 	eggPoints.setCharacterSize(70);
-	eggPoints.setPosition(window.getSize().x - 100, 20);
+	eggPoints.setPosition((float)window.getSize().x - 100.0f, 20.0f);
 }
 
 

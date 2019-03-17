@@ -15,7 +15,7 @@ Chicken::Chicken()
 	chickenSprite.setTexture(*wchickenTexture);
 	chickenSprite.setTextureRect(sf::IntRect(0, 0, imgWidth, imgHeight));
 	chickenSprite.setPosition(300, 300);
-	chickenSprite.setScale(0.35f, 0.35f);
+	chickenSprite.setScale(0.4f, 0.4f);
 	velocity.x = 0;
 	velocity.y = 0;
 	jumpHeight = 150;

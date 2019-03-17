@@ -3,11 +3,14 @@
 #include "GameMenu.h"
 #include "WindowEventCheck.h"
 #include "PlayScreen.h"
+#include <vector>
 
 int main()
 {
 	WindowResolution resolution;
-	sf::RenderWindow window(sf::VideoMode(resolution.getScreenWidth(), resolution.getScreenHeight()), "Sczesliwy pan kurczak", sf::Style::Titlebar | sf::Style::Close | sf::Style::Fullscreen);
+	std::vector<sf::VideoMode> i = sf::VideoMode::getFullscreenModes();
+	sf::RenderWindow window(i.front(), "Sczesliwy pan kurczak", sf::Style::Fullscreen);
+//	sf::RenderWindow window(sf::VideoMode(resolution.getScreenWidth(), resolution.getScreenHeight()), "Sczesliwy pan kurczak", sf::Style::Titlebar | sf::Style::Close);
 	int gameStatus = 1; //0-EXIT, 1-MENU, 2-GAME
 	while (window.isOpen())
 	{
