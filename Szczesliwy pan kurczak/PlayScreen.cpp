@@ -36,18 +36,23 @@ PlayScreen::~PlayScreen()
 
 int PlayScreen::playLoop(sf::RenderWindow & window)
 {
+	int returnValue = 2;
 	Chicken chicken;
 	Points points(window);
 	startsound.play();
-	while (window.isOpen())
+	while (returnValue == 2)
 	{
 		WindowEventCheck::eventChecker(window);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			returnValue = 1;
+		}
 		if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && (dtEggPlacing.getDT() > 0.8))
 		{
 			chicken.jump();
 			eggsound.play();
 			littleEggs[eggsCount].setEggPos(chicken.getChickenPos());
-			eggsCount++;
+   			eggsCount++;
 			if (eggsCount%10 == 0)
 				backsound.play();
 			if (eggsCount == 299)
@@ -71,5 +76,5 @@ int PlayScreen::playLoop(sf::RenderWindow & window)
 			dt.restartDT();
 		}
 	}
-	return 0;
+	return returnValue;
 }

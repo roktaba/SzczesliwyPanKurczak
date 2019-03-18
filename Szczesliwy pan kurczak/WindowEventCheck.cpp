@@ -25,9 +25,10 @@ void WindowEventCheck::eventChecker(sf::RenderWindow & window)
 			break;
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 	{
 		window.close();
-	}
+	}*/
 }
+
 

@@ -36,9 +36,9 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 {
 	bool exit = false;
 	bool play = false;
-	while (window.isOpen())
+	while ((!play) || (!exit))
 	{
-		WindowEventCheck::eventChecker(window);
+		//WindowEventCheck::eventChecker(window);
 			
 		sf::Vector2f mouse(sf::Mouse::getPosition(window));
 		if (playButton.getGlobalBounds().contains(mouse))
