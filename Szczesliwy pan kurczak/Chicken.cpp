@@ -15,7 +15,7 @@ Chicken::Chicken()
 	chickenSprite.setTexture(*wchickenTexture);
 	chickenSprite.setTextureRect(sf::IntRect(0, 0, imgWidth, imgHeight));
 	chickenSprite.setPosition(300, 300);
-	chickenSprite.setScale(0.4f, 0.4f);
+	chickenSprite.setScale(0.5f, 0.5f);
 	velocity.x = 0;
 	velocity.y = 0;
 	jumpHeight = 150;
@@ -47,6 +47,7 @@ void Chicken::uptade(sf::RenderWindow &window)
 			velocity.y = 0;
 			canJump = true;
 			setRandomPos(window);
+			tempPosY = chickenSprite.getPosition().y;
 		}
 	}
 	checkWindowBounds(window);
@@ -73,6 +74,12 @@ void Chicken::setRandomPos(sf::RenderWindow &window)
 	int y = window.getSize().y;
 	chickenSprite.setPosition((std::rand() % x + 1), (std::rand() % y + 1));
 	checkWindowBounds(window);
+}
+
+void Chicken::setPos(sf::Vector2f pos)
+{
+	chickenSprite.setPosition(pos);
+	tempPosY = chickenSprite.getPosition().y;
 }
 
 void Chicken::checkWindowBounds(sf::RenderWindow & window)

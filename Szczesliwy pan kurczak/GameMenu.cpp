@@ -39,7 +39,6 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 	while ((!play) || (!exit))
 	{
 		//WindowEventCheck::eventChecker(window);
-			
 		sf::Vector2f mouse(sf::Mouse::getPosition(window));
 		if (playButton.getGlobalBounds().contains(mouse))
 		{
@@ -73,6 +72,9 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 			window.draw(gameName);
 			window.draw(playButton);
 			window.draw(exitButton);
+
+		//	window.draw(testButton);
+
 			window.display();
 		}
 	}

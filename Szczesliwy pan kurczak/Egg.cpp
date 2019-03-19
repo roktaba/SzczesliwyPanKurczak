@@ -2,18 +2,22 @@
 
 
 
-Egg::Egg()
+Egg::Egg(sf::Texture &wskegg)
 {
-	if (!eggTexture.loadFromFile("Textures/egg2.png"))
+/*	if (!eggTexture.loadFromFile("Textures/egg2.png"))
 	{
 		MessageBox(0, "Textures not found!", "ERROR", 0);
 		return;
-	}
-	weggTexture = &eggTexture;
-	imgHeight = eggTexture.getSize().y / 2;
-	imgWidth = eggTexture.getSize().x / 3;
+	}*/
+	weggTexture = &wskegg;
+	imgHeight = wskegg.getSize().y / 2;
+	imgWidth = wskegg.getSize().x / 3;
 	eggSprite.setTexture(*weggTexture);
 	eggSprite.setTextureRect(sf::IntRect(0, 0, imgWidth, imgHeight));
+}
+
+Egg::Egg()
+{
 }
 
 

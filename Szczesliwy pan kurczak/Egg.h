@@ -6,6 +6,7 @@ class Egg :public sf::Drawable,
 	sf::Transformable
 {
 public:
+	Egg(sf::Texture &wskegg);
 	Egg();
 	~Egg();
 	void setEggPos(sf::Vector2f chickenPos);
@@ -13,7 +14,7 @@ public:
 private:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	sf::Sprite eggSprite;
-	sf::Texture eggTexture;
+	//sf::Texture eggTexture;
 	sf::Texture *weggTexture;
 	int imgWidth, imgHeight;
 };

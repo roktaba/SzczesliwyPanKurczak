@@ -7,6 +7,7 @@
 #include <array>
 #include "DeltaTime.h"
 #include "Points.h"
+#include "PlayerDetails.h"
 
 class PlayScreen
 {
@@ -22,9 +23,10 @@ private:
 	sf::SoundBuffer eggsoundfile;
 	sf::Sound backsound;
 	sf::SoundBuffer backsoundfile;
-	std::array<Egg, 300> littleEggs;
 	int eggsCount;
 	DeltaTime dtEggPlacing;
 	DeltaTime dt;
+	sf::Texture eggTexture;
+	std::array<Egg, 300> littleEggs;
 };
 

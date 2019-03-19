@@ -15,6 +15,7 @@ public:
 	void uptade(sf::RenderWindow &window);
 	void jump();
 	void setRandomPos(sf::RenderWindow &window);
+	void setPos(sf::Vector2f pos);
 	void checkWindowBounds(sf::RenderWindow &window);
 
 private:
