@@ -19,6 +19,7 @@ PlayerDetails::PlayerDetails(sf::RenderWindow &window)
 	nameText.setCharacterSize(30);
 	nameText.setFillColor(sf::Color::Red);
 	nameText.setPosition(((window.getSize().x - nameText.getGlobalBounds().width) / 2), (((window.getSize().y - nameText.getGlobalBounds().height) / 2) + 170));
+	backspaceTime.getDT();
 }
 
 
@@ -35,9 +36,13 @@ void PlayerDetails::uptadeName(std::string x)
 
 void PlayerDetails::uptadeNameBackspace()
 {
-	name.erase(name.size() - 1);
-	wholeRecord = "Nazwa gracza: " + name;
-	nameText.setString(wholeRecord);
+	if ((name.size() > 0) && (backspaceTime.getDT() > 0.1))
+	{
+		name.erase(name.size() - 1);
+		wholeRecord = "Nazwa gracza: " + name;
+		nameText.setString(wholeRecord);
+		backspaceTime.restartDT();
+	}
 }
 
 std::string PlayerDetails::getWholeRecord()

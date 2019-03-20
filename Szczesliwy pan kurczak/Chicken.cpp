@@ -43,10 +43,10 @@ void Chicken::uptade(sf::RenderWindow &window)
 		chickenSprite.move(velocity * (float)dt.getDT());
 		if (tempPosY < chickenSprite.getPosition().y)
 		{
+			setRandomPos(window);
 			velocity.x = 0;
 			velocity.y = 0;
 			canJump = true;
-			setRandomPos(window);
 			tempPosY = chickenSprite.getPosition().y;
 		}
 	}

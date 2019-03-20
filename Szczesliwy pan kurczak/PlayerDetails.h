@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
+#include "DeltaTime.h"
 
 class PlayerDetails
 {
@@ -21,5 +22,6 @@ private:
 	std::string wholeRecord;
 	sf::Font nameFont;
 	sf::Text nameText;
+	DeltaTime backspaceTime;
 };
 

@@ -49,15 +49,16 @@ int PlayScreen::playLoop(sf::RenderWindow & window)
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::TextEntered)
+			if ((event.type == sf::Event::TextEntered)&& (!sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)))
 			{
 			test = event.text.unicode;
 			player1.uptadeName(test);
-		}
+			}
+			break;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 		{
-			//player1.uptadeNameBackspace();
+			player1.uptadeNameBackspace();
 		}
 		window.clear(sf::Color(51, 153, 255));
 		player1.drawName(window);
