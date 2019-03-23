@@ -8,7 +8,6 @@ GameMenu::GameMenu(sf::RenderWindow &window)
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
-		return;
 	}
 	gameName.setFont(menuFont);
 	gameName.setString("SZCZESLIWY PAN KURCZAK");
@@ -24,7 +23,12 @@ GameMenu::GameMenu(sf::RenderWindow &window)
 	exitButton.setString("WYJSCIE");
 	exitButton.setCharacterSize(50);
 	exitButton.setFillColor(sf::Color::White);
-	exitButton.setPosition(((window.getSize().x - exitButton.getGlobalBounds().width) / 2), (((window.getSize().y - exitButton.getGlobalBounds().height) / 2) + 70));
+	exitButton.setPosition(((window.getSize().x - exitButton.getGlobalBounds().width) / 2), (((window.getSize().y - exitButton.getGlobalBounds().height) / 2) + 140));
+	highScoreButton.setFont(menuFont);
+	highScoreButton.setString("NAJLEPSZE WYNIKI");
+	highScoreButton.setCharacterSize(50);
+	highScoreButton.setFillColor(sf::Color::White);
+	highScoreButton.setPosition(((window.getSize().x - highScoreButton.getGlobalBounds().width) / 2), (((window.getSize().y - highScoreButton.getGlobalBounds().height) / 2) + 70));
 }
 
 
@@ -65,6 +69,15 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 			exit = true;
 			break;
 		}
+		if (highScoreButton.getGlobalBounds().contains(mouse))
+		{
+			highScoreButton.setFillColor(sf::Color::Red);
+		}
+		else highScoreButton.setFillColor(sf::Color::White);
+		if ((highScoreButton.getGlobalBounds().contains(mouse)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)))
+		{
+			//highscore code
+		}
 		if (dt.getDT() > 0.017)
 		{
 			dt.restartDT();
@@ -72,8 +85,7 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 			window.draw(gameName);
 			window.draw(playButton);
 			window.draw(exitButton);
-
-		//	window.draw(testButton);
+			window.draw(highScoreButton);
 
 			window.display();
 		}

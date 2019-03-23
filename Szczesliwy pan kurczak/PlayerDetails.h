@@ -4,6 +4,7 @@
 #include <string>
 #include <Windows.h>
 #include "DeltaTime.h"
+#include <fstream>
 
 class PlayerDetails
 {
@@ -15,6 +16,7 @@ public:
 	std::string getWholeRecord();
 	void drawName(sf::RenderWindow &window);
 	void increasePoint();
+	void saveScore();
 
 private:
 	std::string name;

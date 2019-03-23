@@ -11,7 +11,6 @@ PlayerDetails::PlayerDetails(sf::RenderWindow &window)
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
-		return;
 	}
 
 	nameText.setFont(nameFont);
@@ -58,4 +57,19 @@ void PlayerDetails::drawName(sf::RenderWindow & window)
 void PlayerDetails::increasePoint()
 {
 	points++;
+}
+
+void PlayerDetails::saveScore()
+{
+	std::fstream file;
+	file.open("highscore.txt", std::ios::app | std::ios::out);
+	if (!file.good())
+	{
+		MessageBox(0, "Font not found!", "ERROR", 0);
+		system("pause");
+	}
+	std::string pktString = std::to_string(points);
+	std::string saveRecod = name + "  punktow: " + pktString;
+	file << saveRecod << std::endl;
+	file.close();
 }

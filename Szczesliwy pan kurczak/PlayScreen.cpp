@@ -6,7 +6,7 @@ PlayScreen::PlayScreen()
 	if (!eggTexture.loadFromFile("Textures/egg2.png"))
 	{
 	MessageBox(0, "Textures not found!", "ERROR", 0);
-	return;
+	system("pause");
 	}
 	eggsCount = 0;
 	dtEggPlacing.restartDT();
@@ -15,21 +15,18 @@ PlayScreen::PlayScreen()
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
-		return;
 	}
 	startsound.setBuffer(startsoundfile);
 	if (!eggsoundfile.loadFromFile("Audio/eggaudio.wav"))
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
-		return;
 	}
 	eggsound.setBuffer(eggsoundfile);
 	if (!backsoundfile.loadFromFile("Audio/tlo.wav"))
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
-		return;
 	}
 	backsound.setBuffer(backsoundfile);
 }
@@ -124,5 +121,6 @@ int PlayScreen::playLoop(sf::RenderWindow & window)
 			dt.restartDT();
 		}
 	}
+	player1.saveScore();
 	return returnValue;
 }

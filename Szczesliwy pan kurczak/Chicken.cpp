@@ -7,7 +7,7 @@ Chicken::Chicken()
 	if (!chickenTexture.loadFromFile("Textures/kurczak.png"))
 	{
 		MessageBox(0, "Textures not found!", "ERROR", 0);
-		return;
+		system("pause");
 	}
 	wchickenTexture = &chickenTexture;
 	imgHeight = chickenTexture.getSize().y;

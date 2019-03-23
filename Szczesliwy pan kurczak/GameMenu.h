@@ -16,6 +16,7 @@ private:
 	sf::Text gameName;
 	sf::Text playButton;
 	sf::Text exitButton;
+	sf::Text highScoreButton;
 	DeltaTime dt;
 };
 
