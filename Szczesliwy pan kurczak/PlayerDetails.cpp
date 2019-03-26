@@ -62,14 +62,29 @@ void PlayerDetails::increasePoint()
 void PlayerDetails::saveScore()
 {
 	std::fstream file;
-	file.open("highscore.txt", std::ios::app | std::ios::out);
+	int number = 0;
+	std::string line;
+	file.open("highscore.txt", std::ios::in);
 	if (!file.good())
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
 	}
+	while (!file.eof()) 
+	{
+		std::getline(file, line);
+		number++;
+	}
+	file.close();
+	file.open("highscore.txt", std::ios::app);
+	if (!file.good())
+	{
+		MessageBox(0, "Font not found!", "ERROR", 0);
+		system("pause");
+	}
+	std::string numberString = std::to_string(number);
 	std::string pktString = std::to_string(points);
-	std::string saveRecod = name + "  punktow: " + pktString;
-	file << saveRecod << std::endl;
+	std::string saveRecord = numberString + ". " + name + "  punktow: " + pktString;
+	file << saveRecord << std::endl;
 	file.close();
 }
