@@ -76,7 +76,8 @@ int GameMenu::menuLoop(sf::RenderWindow & window)
 		else highScoreButton.setFillColor(sf::Color::White);
 		if ((highScoreButton.getGlobalBounds().contains(mouse)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)))
 		{
-			//highscore code
+			HighScoreScreen hSScreen(window);
+			hSScreen.hSLoop(window);
 		}
 		if (dt.getDT() > 0.017)
 		{

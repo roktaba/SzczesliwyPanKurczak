@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include "WindowEventCheck.h"
 #include "DeltaTime.h"
+#include "HighScoreScreen.h"
 
 class GameMenu
 {
