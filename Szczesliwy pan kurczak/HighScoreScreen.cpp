@@ -30,17 +30,22 @@ void HighScoreScreen::hSLoop(sf::RenderWindow & window)
 {
 	std::fstream file;
 	std::string line;
-	file.open("highscore.txt", std::ios::in);
+	file.open("highscore.txt", std::ios::in | std::ios::out);
 	if (!file.good())
 	{
 		MessageBox(0, "Font not found!", "ERROR", 0);
 		system("pause");
 	}
+	int i = 0;
 	while (!file.eof())
 	{
-		int i = 0;
 		std::getline(file, line);
 		scores[i].setString(line);
+		scores[i].setFont(hSFont);
+		scores[i].setCharacterSize(40);
+		scores[i].setFillColor(sf::Color::Red);
+		scores[i].setPosition(((window.getSize().x - scores[i].getGlobalBounds().width) / 2.0), (100.0 + (i*70.0)));
+		i++;
 	}
 	file.close();
 	bool loop = true;
@@ -60,6 +65,10 @@ void HighScoreScreen::hSLoop(sf::RenderWindow & window)
 		{
 			dt.restartDT();
 			window.clear(sf::Color(51, 153, 255));
+			for (int i = 0; i < 10; i++)
+			{
+				window.draw(scores[i]);
+			}
 			window.draw(hSName);
 			window.draw(exitButton);
 			window.display();
