@@ -73,6 +73,19 @@ void PlayerDetails::saveScore()
 	while (!file.eof()) 
 	{
 		std::getline(file, line);
+		scoreStrings.push_back(line);
+		std::string stringNumber;
+		int i = line.size()-1;
+		if (i > 4)
+		{
+			while (!std::isblank(line[i]))
+			{
+				i--;
+			}
+			int x = line.size()-1;
+			stringNumber.insert(0, line, i+1, x);
+			scoreBoard[number] = std::stoi(stringNumber);
+		}
 		number++;
 	}
 	file.close();

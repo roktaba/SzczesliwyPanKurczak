@@ -5,6 +5,8 @@
 #include <Windows.h>
 #include "DeltaTime.h"
 #include <fstream>
+#include <cctype>
+#include <vector>
 
 class PlayerDetails
 {
@@ -25,5 +27,7 @@ private:
 	sf::Font nameFont;
 	sf::Text nameText;
 	DeltaTime backspaceTime;
+	int scoreBoard[10] = { 0 };
+	std::vector<std::string> scoreStrings;
 };
 
